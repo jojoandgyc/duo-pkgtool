@@ -30,4 +30,4 @@ export DPT_PATH_KERNEL="/home/{username}/xxx/.../xxx/rt-thread/bsp/cvitek"
 
 ## 注意
 输出目录为duo-pkgtool/output/目录。      
-目前，这个duo-pkgtool相对独立，还没有修改与清理RT-Thread仓库的bsp/cvitek目录。
+目前，这个duo-pkgtool相对独立，还没有修改与清理RT-Thread仓库的bsp/cvitek目录。下一步可以进行bsp/cvitek目录的优化和清理工作。
