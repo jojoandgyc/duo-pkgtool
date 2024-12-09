@@ -11,6 +11,13 @@ if [[ -z "$PROJECT_PATH" ]] || [[ -z "$IMAGE_NAME" ]] || [[ -z "$BOARD_TMP" ]] |
 	exit 1
 fi
 
+if ! command -v mkimage &> /dev/null
+then
+	printf "\n## Some tools are missing. Please install them first. \n\n" 
+	printf "## To solve this problem, you can use '$ sudo apt install u-boot-tools' to install. \n\n" 
+	exit 1
+fi
+
 CURRENT_PATH=$(pwd)
 echo ${OUT_PATH}
 
