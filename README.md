@@ -2,7 +2,7 @@
 A simple pkg tool for duo to pack RT-Thread                 
 
 ## 准备工作
-- 首先需要拉取duo-pkgtool工具到本地目录。示例如下：
+- 首先需要拉取 `duo-pkgtool`工具到本地目录。示例如下：
 ``` shell 
 $ git clone git@github.com:koikky/duo-pkgtool.git 
 ```
@@ -15,28 +15,28 @@ $ sudo apt install u-boot-tools
 
 ## 开始使用
 ### 设置环境
-- 每次使用前，需要加载duo-pkgtool/script/目录下的env.sh。示例如下：                                    
- ``` shell
+- 每次使用前，需要加载 `duo-pkgtool/script/`目录下的 `env.sh`。示例如下：                                    
+``` shell
 $ source duo-pkgtool/script/env.sh 
 ```  
                             
-- 如果想要更改duo-pkgtool的环境配置，可以使用change_config命令。示例如下：
+- 如果想要更改 `duo-pkgtool`的环境配置，可以使用 `change_config`命令。示例如下：
  ``` shell
 $ change_config 
 ```           
-Tips：用户可以根据自己的需要进行选择。                                    
+Tips：用户可以根据自己的需要选择不同选项。                                    
 
-- 同时，用户可以在终端里输入print_usage命令获取提示,也可以输入print_env命令获取当前duo-pkgtool的环境信息。示例如下：                                      
+- 同时，用户可以在终端里输入 `print_usage`命令获取使用提示,也可以输入 `print_env`命令获取当前 `duo-pkgtool`的环境信息。示例如下：                                      
  ``` shell 
 $ print_usage
 $ print_env
  ```                        
 
 ### 打包
-- 当成功运行env.sh后，可以使用如下命令进行打包，打包结果为镜像文件。                        
+当成功运行 `env.sh`后，可以使用如下命令进行打包，打包结果为镜像文件。                        
  ``` shell
 $ mkpkg
 ```                             
-Tips：用户可以根据自己的需要进行选择。                               
+Tips：用户可以根据自己的需要选择不同选项。                               
 
 ## 注意
