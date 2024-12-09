@@ -10,46 +10,46 @@ CONFIG_CURRENT_SELECTION=0
 
 is_valid_model() {
 	local BOARD_NAME=("duo" "duo256m" "duos")
-    local PARAM1=$1
-    local check_param=false
+	local PARAM1=$1
+	local check_param=false
 	for element in "${BOARD_NAME[@]}"; do
-    	if [[ "$PARAM1" == "$element" ]]; then
-        	check_param=true
-        	break
-    	fi
+		if [[ "$PARAM1" == "$element" ]]; then
+			check_param=true
+			break
+		fi
 	done
 	if [[ "$check_param" == true ]]; then
-    	return 0
-    else 
-    	return 1
+		return 0
+	else 
+		return 1
 	fi
 }
 
 is_valid_path() {
-    local path="$1"
-    if [[ ! "$path" =~ ^/[-_.a-zA-Z0-9/]*$ ]]; then
-        return 1
-    fi
-    
-    if [ -d "$path" ]; then
-        return 0  
-    elif [ -f "$path" ]; then
-        return 1
-    else
-        return 1 
-    fi
+	local path="$1"
+	if [[ ! "$path" =~ ^/[-_.a-zA-Z0-9/]*$ ]]; then
+		return 1
+	fi
+	
+	if [ -d "$path" ]; then
+		return 0  
+	elif [ -f "$path" ]; then
+		return 1
+	else
+		return 1 
+	fi
 }
 
 print_config_menu() {
-    clear
-    printf "# Please select the option you want to configure -(Q/q Exit)-\n\n"
-    for i in "${!CONFIG_MENU_ITEMS[@]}"; do
-        if [ $i -eq $CONFIG_CURRENT_SELECTION ]; then
-            printf "%-15s <==\n" "${CONFIG_MENU_ITEMS[i]}"
-        else
-            printf "%-15s\n" "${CONFIG_MENU_ITEMS[i]}"
-        fi
-    done
+	clear
+	printf "# Please select the option you want to configure -(Q/q Exit)-\n\n"
+	for i in "${!CONFIG_MENU_ITEMS[@]}"; do
+		if [ $i -eq $CONFIG_CURRENT_SELECTION ]; then
+			printf "%-15s <==\n" "${CONFIG_MENU_ITEMS[i]}"
+		else
+			printf "%-15s\n" "${CONFIG_MENU_ITEMS[i]}"
+		fi
+	done
 }
 
 function change_config()
@@ -63,7 +63,7 @@ function change_config()
 		print_config_menu
 		
 		read -rsn1 input
-    	case $input in
+		case $input in
 			A) # (Notice \E[A)
 				if [ $CONFIG_CURRENT_SELECTION -gt 0 ]; then
 					((CONFIG_CURRENT_SELECTION--))
@@ -98,7 +98,7 @@ function change_config()
 								BOARD="duo256m"
 								break 
 							fi
-    	
+		
 							if is_valid_model "$user_input"; then
 								BOARD="${user_input}"
 								break  
@@ -142,7 +142,7 @@ function change_config()
 								printf "## The directory you inputted is invalid. Please try again! \n\n"
 								continue 
 							fi
-    	
+		
 							if is_valid_path "$user_input"; then
 								KERNEL_DIR="${user_input}"
 								break  
@@ -185,7 +185,7 @@ function change_config()
 								OUT_PATH=$(realpath "${DPT_SCRIPT_PATH}/../output")
 								break 
 							fi
-    	
+		
 							if is_valid_path "$user_input"; then
 								OUT_PATH="${user_input}"
 								break  
@@ -242,19 +242,19 @@ if [ ! -f "${CONFIG_PATH}" ]; then
 	printf "# The models supported are duo, duo256m and duos.(The default model is duo256m)\n\n"
 	
 	while true; do
-    	echo -n "Please input board type(You can just input enter, the model used is the default model): "
-    	read user_input
-    	if [ -z "$user_input" ]; then
-    		BOARD="duo256m"
+		echo -n "Please input board type(You can just input enter, the model used is the default model): "
+		read user_input
+		if [ -z "$user_input" ]; then
+			BOARD="duo256m"
 			break 
-    	fi
-    	
-    	if is_valid_model "$user_input"; then
-        	BOARD="${user_input}"
-        	break  
-    	else
-        	printf "## The board type you inputted is invalid. Please try again! \n\n"
-    	fi
+		fi
+		
+		if is_valid_model "$user_input"; then
+			BOARD="${user_input}"
+			break  
+		else
+			printf "## The board type you inputted is invalid. Please try again! \n\n"
+		fi
 	done
 	
 	echo "DPT_BOARD_TYPE: ${BOARD}" >> "${CONFIG_PATH}"
@@ -264,19 +264,19 @@ if [ ! -f "${CONFIG_PATH}" ]; then
 	printf "# For example:'/home/{username}/xxx/.../xxx/rt-thread/bsp/cvitek' \n\n"
 	
 	while true; do
-    	echo -n "Please input duo directory: "
-    	read user_input
-    	if [ -z "$user_input" ]; then
-    		printf "## The directory you inputted is invalid. Please try again! \n\n"
-    		continue
-    	fi
-    	
-    	if is_valid_path "$user_input"; then
-        	KERNEL_DIR="${user_input}"
-        	break  
-    	else
-        	printf "## The directory you inputted is invalid. Please try again! \n\n"
-    	fi
+		echo -n "Please input duo directory: "
+		read user_input
+		if [ -z "$user_input" ]; then
+			printf "## The directory you inputted is invalid. Please try again! \n\n"
+			continue
+		fi
+		
+		if is_valid_path "$user_input"; then
+			KERNEL_DIR="${user_input}"
+			break  
+		else
+			printf "## The directory you inputted is invalid. Please try again! \n\n"
+		fi
 	done
 	
 	echo "DPT_PATH_KERNEL: ${KERNEL_DIR}" >> "${CONFIG_PATH}"
@@ -285,19 +285,19 @@ if [ ! -f "${CONFIG_PATH}" ]; then
 	printf "# Please specify the output directory. \n\n"
 	
 	while true; do
-    	echo -n "Please input the output directory(You can just input enter, the output directory default is '.../duo-pkgtool/output'): "
-    	read user_input
-    	if [ -z "$user_input" ]; then
-    		OUT_PATH=$(realpath "${DPT_SCRIPT_PATH}/../output")
+		echo -n "Please input the output directory(You can just input enter, the output directory default is '.../duo-pkgtool/output'): "
+		read user_input
+		if [ -z "$user_input" ]; then
+			OUT_PATH=$(realpath "${DPT_SCRIPT_PATH}/../output")
 			break
-    	fi
-    	
-    	if is_valid_path "$user_input"; then
-        	OUT_PATH="${user_input}"
-        	break  
-    	else
-        	printf "## The directory you inputted does not exist. Please try again! \n\n"
-    	fi
+		fi
+		
+		if is_valid_path "$user_input"; then
+			OUT_PATH="${user_input}"
+			break  
+		else
+			printf "## The directory you inputted does not exist. Please try again! \n\n"
+		fi
 	done
 	
 	echo "DPT_PATH_OUTPUT: ${OUT_PATH}" >> "${CONFIG_PATH}"
@@ -306,10 +306,10 @@ if [ ! -f "${CONFIG_PATH}" ]; then
 fi
 
 while IFS= read -r line; do
-    if [[ "$line" == "DPT_BOARD_TYPE: "* ]]; then
+	if [[ "$line" == "DPT_BOARD_TYPE: "* ]]; then
 		BOARD_TYPE="${line#DPT_BOARD_TYPE: }"
 		break
-    fi
+	fi
 done < "${CONFIG_PATH}"
 
 if [ ! -z "${BOARD_TYPE}" ]; then
@@ -326,19 +326,19 @@ else
 	printf "# The models supported are duo, duo256m and duos.(The default model is duo256m)\n\n"
 	
 	while true; do
-    	echo -n "Please input board type(You can just input enter, the model used is the default model): "
-    	read user_input
-    	if [ -z "$user_input" ]; then
-    		BOARD="duo256m"
+		echo -n "Please input board type(You can just input enter, the model used is the default model): "
+		read user_input
+		if [ -z "$user_input" ]; then
+			BOARD="duo256m"
 			break 
-    	fi
-    	
-    	if is_valid_model "$user_input"; then
-        	BOARD="${user_input}"
-        	break  
-    	else
-        	printf "## The board type you inputted is invalid. Please try again! \n\n"
-    	fi
+		fi
+		
+		if is_valid_model "$user_input"; then
+			BOARD="${user_input}"
+			break  
+		else
+			printf "## The board type you inputted is invalid. Please try again! \n\n"
+		fi
 	done
 	
 	echo "DPT_BOARD_TYPE: ${BOARD}" >> "${CONFIG_PATH}"
@@ -347,10 +347,10 @@ else
 fi
 
 while IFS= read -r line; do
-    if [[ "$line" == "DPT_PATH_KERNEL: "* ]]; then
+	if [[ "$line" == "DPT_PATH_KERNEL: "* ]]; then
 		KERNEL_PATH="${line#DPT_PATH_KERNEL: }"
 		break
-    fi
+	fi
 done < "${CONFIG_PATH}"
 
 if [ ! -z "${KERNEL_PATH}" ]; then
@@ -367,18 +367,18 @@ else
 	printf "# For example:'/home/{username}/xxx/.../xxx/rt-thread/bsp/cvitek'\n\n"
 	
 	while true; do
-    	echo -n "Please input duo directory: "
-    	read user_input
-    	if [ -z "$user_input" ]; then
-    		printf "## The directory you inputted is invalid. Please try again! \n\n"
-    	fi
-    	
-    	if is_valid_path "$user_input"; then
-        	KERNEL_DIR="${user_input}"
-        	break  
-    	else
-        	printf "## The directory you inputted is invalid. Please try again! \n\n"
-    	fi
+		echo -n "Please input duo directory: "
+		read user_input
+		if [ -z "$user_input" ]; then
+			printf "## The directory you inputted is invalid. Please try again! \n\n"
+		fi
+		
+		if is_valid_path "$user_input"; then
+			KERNEL_DIR="${user_input}"
+			break  
+		else
+			printf "## The directory you inputted is invalid. Please try again! \n\n"
+		fi
 	done
 	
 	echo "DPT_PATH_KERNEL: ${KERNEL_DIR}" >> "${CONFIG_PATH}"
@@ -387,10 +387,10 @@ else
 fi
 
 while IFS= read -r line; do
-    if [[ "$line" == "DPT_PATH_OUTPUT: "* ]]; then
+	if [[ "$line" == "DPT_PATH_OUTPUT: "* ]]; then
 		OUTPUT_PATH="${line#DPT_PATH_OUTPUT: }"
 		break
-    fi
+	fi
 done < "${CONFIG_PATH}"
 
 if [ ! -z "${OUTPUT_PATH}" ]; then
@@ -414,19 +414,19 @@ else
 	printf "# Please specify the output directory. \n\n"
 	
 	while true; do
-    	echo -n "Please input the output directory(You can just input enter, the output directory default is '.../duo-pkgtool/output'): "
-    	read user_input
-    	if [ -z "$user_input" ]; then
-    		OUT_PATH=$(realpath "${DPT_SCRIPT_PATH}/../output")
+		echo -n "Please input the output directory(You can just input enter, the output directory default is '.../duo-pkgtool/output'): "
+		read user_input
+		if [ -z "$user_input" ]; then
+			OUT_PATH=$(realpath "${DPT_SCRIPT_PATH}/../output")
 			break 
-    	fi
-    	
-    	if is_valid_path "$user_input"; then
-        	OUT_PATH="${user_input}"
-        	break  
-    	else
-        	printf "## The directory you inputted does not exist. Please try again! \n\n"
-    	fi
+		fi
+		
+		if is_valid_path "$user_input"; then
+			OUT_PATH="${user_input}"
+			break  
+		else
+			printf "## The directory you inputted does not exist. Please try again! \n\n"
+		fi
 	done
 	
 	echo "DPT_PATH_OUTPUT: ${OUT_PATH}" >> "${CONFIG_PATH}"
@@ -440,15 +440,15 @@ export DPT_PATH_OUTPUT=$(realpath "${DPT_PATH_OUTPUT}")
 export DPT_PATH=$(realpath "${DPT_SCRIPT_PATH}/..")
 
 if [ -d "${DPT_PATH}" ]; then
-    if [ ! -d "${DPT_PATH}/prebuilt" ] || [ ! -d "${DPT_PATH}/script" ]; then
-    	echo "## The duo-pkgtool directory is not complete and cannot be used properly. Please use a valid duo-pkgtool or download duo-pkgtool again."
-    	return 1
+	if [ ! -d "${DPT_PATH}/prebuilt" ] || [ ! -d "${DPT_PATH}/script" ]; then
+		echo "## The duo-pkgtool directory is not complete and cannot be used properly. Please use a valid duo-pkgtool or download duo-pkgtool again."
+		return 1
 	else
-    	echo "# duo-pkgtool check is complete, you can try using duo-pkgtool. "
+		echo "# duo-pkgtool check is complete, you can try using duo-pkgtool. "
 	fi
 else 
-    echo "## The path to duo-pkgtool does not exist. Please try using a valid duo-pkgtool. "
-    return 1
+	echo "## The path to duo-pkgtool does not exist. Please try using a valid duo-pkgtool. "
+	return 1
 fi
 
 source "${DPT_SCRIPT_PATH}/build.sh" 
