@@ -40,15 +40,15 @@ PACK_NUM_ITEMS=${#PACK_MENU_ITEMS[@]}
 PACK_CURRENT_SELECTION=0 
 
 print_pack_menu() {
-    clear
-    printf "# Please choose what you would want to pack -(Q/q Exit)-\n\n"
-    for i in "${!PACK_MENU_ITEMS[@]}"; do
-        if [ $i -eq $PACK_CURRENT_SELECTION ]; then
-            printf "%-15s <==\n" "${PACK_MENU_ITEMS[i]}"
-        else
-            printf "%-15s\n" "${PACK_MENU_ITEMS[i]}"
-        fi
-    done
+	clear
+	printf "# Please choose what you would want to pack -(Q/q Exit)-\n\n"
+	for i in "${!PACK_MENU_ITEMS[@]}"; do
+		if [ $i -eq $PACK_CURRENT_SELECTION ]; then
+			printf "%-15s <==\n" "${PACK_MENU_ITEMS[i]}"
+		else
+			printf "%-15s\n" "${PACK_MENU_ITEMS[i]}"
+		fi
+	done
 }
 
 function mkpkg() {
@@ -57,7 +57,7 @@ function mkpkg() {
 		print_pack_menu
 		
 		read -rsn1 input
-    	case $input in
+		case $input in
 			A) # (Notice \E[A)
 				if [ $PACK_CURRENT_SELECTION -gt 0 ]; then
 					((PACK_CURRENT_SELECTION--))
