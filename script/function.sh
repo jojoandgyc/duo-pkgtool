@@ -8,25 +8,25 @@ function get_board_type()
 	fi
 
 	local BOARD=$1
- 	local VENDOR="milkv"
- 	
- 	local tmp_check=false
+	local VENDOR="milkv"
+	
+	local tmp_check=false
 	local result_array=()
- 	
- 	printf "\n# The model of duo you selected is {${BOARD}} \n\n"
- 	
+	
+	printf "\n# The model of duo you selected is {${BOARD}} \n\n"
+	
 	for dir in "$PREBUILT_PATH"/*/; do
-    	if [[ "$(basename "$dir")" == "common" ]]; then
-    	    continue
-    	fi
- 
-    	dirname=$(basename "$dir")
+		if [[ "$(basename "$dir")" == "common" ]]; then
+			continue
+		fi
+	
+		dirname=$(basename "$dir")
 
-    	if [[ "$dirname" == "${VENDOR}-"* ]]; then
-    	    dirname="${dirname#${VENDOR}-}"
-    	fi
- 
-    	result_array+=("$dirname")
+		if [[ "$dirname" == "${VENDOR}-"* ]]; then
+			dirname="${dirname#${VENDOR}-}"
+		fi
+	
+		result_array+=("$dirname")
 	done
 	
 	if [ ${#result_array[@]} -eq 0 ]; then
@@ -38,13 +38,13 @@ function get_board_type()
 		for element in "${result_array[@]}"; do
 			printf " <${element}>\n"
 		done
- 	fi
- 	
+	fi
+		
 	for value in "${result_array[@]}"; do
-    	if [[ "$value" == "$BOARD" ]]; then
+		if [[ "$value" == "$BOARD" ]]; then
 			tmp_check=true
 			break
-    	fi
+		fi
 	done
 	
 	printf "\n"
@@ -82,8 +82,8 @@ function do_combine()
 	if [ ! -x "${COMMON_DIR}/fiptool.py" ]; then
 		echo "File '${COMMON_DIR}/fiptool.py' is not executable. Adding executable permission..."
 		chmod +x "${COMMON_DIR}/fiptool.py"
- 	fi
- 	
+	fi
+	
 	echo "Combining fip.bin..."
 	. ${FSBL_BUILD_PLAT}/blmacros.env && \
 	${COMMON_DIR}/fiptool.py -v genfip \
