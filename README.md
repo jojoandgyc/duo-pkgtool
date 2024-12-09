@@ -16,9 +16,9 @@ $ sudo apt install u-boot-tools
 ## 开始使用
 ### 设置环境
 - 每次使用前，需要加载 `duo-pkgtool/script/`目录下的 `env.sh`。示例如下：                                    
-``` shell
-$ source duo-pkgtool/script/env.sh 
-```  
+	``` shell
+	$ source duo-pkgtool/script/env.sh 
+	```  
                             
 - 如果想要更改 `duo-pkgtool`的环境配置，可以使用 `change_config`命令。示例如下：
  ``` shell
