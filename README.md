@@ -40,3 +40,4 @@ A simple pkg tool for duo to pack RT-Thread.
 	Tips：用户可以根据自己的需要选择不同选项。                               
 
 ## 3. 注意
+本次采用了 prompt 提示交互，因为配置项少所以没有使用menuconfig。  
