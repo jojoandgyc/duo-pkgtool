@@ -28,9 +28,9 @@ A simple pkg tool for duo to pack RT-Thread.
 
 ### 2.2. 打包
 - 当成功运行 `tool.sh` 后，可以使用如下命令进行打包，打包结果为镜像文件。                                   
-  	其中，命令的格式为：``` mkpkg kernel_path [board_type] [output_path] [-option]```，示例如下：                                                                   
+  	其中，命令的格式为：```mkpkg DPT_PATH_KERNEL={kernel} [DPT_BOARD_TYPE={type}] [DPT_PATH_OUTPUT={output}] [-l/-a]```，示例如下：                                              
 	``` shell
-	$ mkpkg DPT_PATH_KERNEL={kernel/} [DPT_BOARD_TYPE={type}] [DPT_PATH_OUTPUT={output/}] [-l/-a] 
+	$ mkpkg DPT_PATH_KERNEL=/home/{username}/rt-thread DPT_BOARD_TYPE=duo256m -a 
 	```                             
 	- 携带的参数没有顺序之分。                                                                                                              
 	- 参数中含有 `[]` 的项是可以省略的，只有选项 `DPT_PATH_KERNEL` 是不能省略的，打包时需要指定。                                                                
