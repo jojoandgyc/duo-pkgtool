@@ -15,29 +15,26 @@ A simple pkg tool for duo to pack RT-Thread.
 
 ## 2. 开始使用
 ### 2.1. 设置环境
-- 每次使用前，需要加载 `duo-pkgtool/script/`目录下的 `env.sh`。示例如下：                                    
+- 每次使用前，需要加载 `script/`目录下的 `tool.sh`。示例如下：                                    
 	``` shell
-	$ source duo-pkgtool/script/env.sh 
+	$ cd duo-pkgtool
+	$ source script/tool.sh 
 	```  
-                            
-- 如果想要更改 `duo-pkgtool`的环境配置，可以使用 `change_config`命令。示例如下：
-	``` shell
-	$ change_config 
-	```           
-	Tips：用户可以根据自己的需要选择不同选项。                                    
-
-- 同时，用户可以在终端里输入 `print_usage`命令获取使用提示,也可以输入 `print_env`命令获取当前 `duo-pkgtool`的环境信息。示例如下：                                      
+                                                
+- 同时，用户可以在终端里输入 `print_usage`命令获取使用提示。示例如下：                                      
 	``` shell 
 	$ print_usage
-	$ print_env
 	```                        
 
 ### 2.2. 打包
-- 当成功运行 `env.sh`后，可以使用如下命令进行打包，打包结果为镜像文件。                        
+- 当成功运行 `tool.sh`后，可以使用如下命令进行打包，打包结果为镜像文件。命令的格式为：mkpkg DPT_PATH_KERNEL={kernel} [DPT_BOARD_TYPE={type}] [DPT_PATH_OUTPUT={output}] [-l/-a]                        
 	``` shell
 	$ mkpkg
 	```                             
-	Tips：用户可以根据自己的需要选择不同选项。                               
-
-## 3. 注意
-本次采用了 prompt 提示交互，因为配置项少所以没有使用menuconfig。  
+	Tips：1. 携带的参数没有顺序之分。                                                                
+		   2. 携带的参数有些是可以省略的，只有选项DPT_PATH_KERNEL是不能省略的，打包时需要指定。                         
+		   3. 被省略的项采用默认值：                                         
+				（1）选项DPT_BOARD_TYPE的默认采用`duo256m`。
+				（2）选项DPT_PATH_OUTPUT的默认采用目录`duo-pkgtool/output`。                  
+				（3）默认对大核进行打包，若用户有其他选择添加选项`-l`或`-a`，`-l`表示对小核进行打包，`-a`表示对全部进行打包。                                                                                                                                                                   
+	
