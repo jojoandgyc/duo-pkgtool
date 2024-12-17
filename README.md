@@ -32,10 +32,10 @@ A simple pkg tool for duo to pack RT-Thread.
 	``` shell
 	$ mkpkg DPT_PATH_KERNEL={kernel} [DPT_BOARD_TYPE={type}] [DPT_PATH_OUTPUT={output}] [-l/-a] 
 	```                             
-	Tips：1. 携带的参数没有顺序之分。                                                                
-	      2. 携带的参数有些是可以省略的，只有选项 `DPT_PATH_KERNEL` 是不能省略的，打包时需要指定。                         
-	      3. 被省略的项采用默认值：                                         
-		（1）选项 `DPT_BOARD_TYPE` 的默认采用 `duo256m`。
-		（2）选项 `DPT_PATH_OUTPUT` 的默认采用目录 `duo-pkgtool/output`。                  
-		（3）默认对大核进行打包，若用户有其他选择添加选项 `-l` 或 `-a`， `-l` 表示对小核进行打包，`-a` 表示对全部进行打包。                                                                                                                                                                   
+	Tips：1. 携带的参数没有顺序之分。                                                                                                              
+	      2. 携带的参数有些是可以省略的，只有选项 `DPT_PATH_KERNEL` 是不能省略的，打包时需要指定。                                                                
+	      3. 被省略的项采用默认值：                                                                           
+		（1）选项 `DPT_BOARD_TYPE` 的默认采用 `duo256m`。                                         
+		（2）选项 `DPT_PATH_OUTPUT` 的默认采用目录 `duo-pkgtool/output`。                                                 
+		（3）默认对大核进行打包，若用户有其他选择添加选项 `-l` 或 `-a`， `-l` 表示对小核进行打包，`-a` 表示对全部进行打包。                                                                                                                                                                                                       
 	
