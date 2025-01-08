@@ -10,6 +10,6 @@
 
 参数2：开发板名称 duo / duo256 / duos
 
-如果没填 参数2 ， 默认 制作全部开发板 ， 支持 sd \ emmc \ spinand \ spinor 存储介质
+如果没填 参数2 ， 默认 制作全部开发板 ， 
 
 duo-buildroot-sdk项目编译需要十分钟左右，运行结束，自动复制关键文件到 prebuit目录下
