@@ -26,9 +26,9 @@
 
 		/*FDT*/
     
-        fdt-cv1812cp_milkv_duo256m_spinor {
-            description = "cvitek device tree - cv1812cp_milkv_duo256m_spinor";
-            data = /incbin/("./cv1812cp_milkv_duo256m_spinor.dtb");
+        fdt-cv1813h_milkv_duos_sd {
+            description = "cvitek device tree - cv1813h_milkv_duos_sd";
+            data = /incbin/("./cv1813h_milkv_duos_sd.dtb");
             type = "flat_dt";
             arch = "riscv";
             compression = "none";
@@ -44,10 +44,10 @@
 	/*CFG*/
     configurations {
         
-        config-cv1812cp_milkv_duo256m_spinor {
-            description = "boot cvitek system with board cv1812cp_milkv_duo256m_spinor";
+        config-cv1813h_milkv_duos_sd {
+            description = "boot cvitek system with board cv1813h_milkv_duos_sd";
             kernel = "kernel-1";
-            fdt = "fdt-cv1812cp_milkv_duo256m_spinor";
+            fdt = "fdt-cv1813h_milkv_duos_sd";
         };
 
     };

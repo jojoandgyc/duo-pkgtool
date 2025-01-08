@@ -1,0 +1,33 @@
+--- /mnt/f/githubfrok/p1/duo-buildroot-sdk/cctv/duo-buildroot-sdk/build/milkvsetup.sh	2025-01-04 23:38:40.732254500 +0800
++++ /mnt/f/githubfrok/p1/duo-buildroot-sdk/duo-buildroot-sdk/build/milkvsetup.sh	2024-12-24 18:09:56.961133600 +0800
+@@ -335,20 +335,20 @@
+ 
+ function build_all()
+ {
+-  build bsp
++  # build bsp
+   build_uboot || return $?
+   build_kernel || return $?
+   build_osdrv || return $?
+   build_middleware || return $?
+-  #pack_access_guard_turnkey_app || return $?
+-  #pack_ipc_turnkey_app || return $?
+-  #pack_boot || return $?
+-  #pack_cfg || return $?
+-  #pack_rootfs || return $?
+-  #pack_data
+-  #pack_system || return $?
+-  #copy_tools
+-  #pack_upgrade
++  pack_access_guard_turnkey_app || return $?
++  pack_ipc_turnkey_app || return $?
++  pack_boot || return $?
++  pack_cfg || return $?
++  pack_rootfs || return $?
++  pack_data
++  pack_system || return $?
++  copy_tools
++  pack_upgrade
+ }
+ 
+ function clean_all()

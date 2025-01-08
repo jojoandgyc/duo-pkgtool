@@ -42,3 +42,4 @@ mkimage -f ${PREBUILT_PATH}/${BOARD_TYPE}/dtb/${BOARD_TMP}-${STORAGE_TYPE}/multi
 if [ -f "${PREBUILT_PATH}/${BOARD_TYPE}/dtb/${BOARD_TMP}-${STORAGE_TYPE}/Image.lzma" ]; then
 	rm -rf "${PREBUILT_PATH}/${BOARD_TYPE}/dtb/${BOARD_TMP}-${STORAGE_TYPE}/Image.lzma"
 fi
+echo "Big kernels compress successfully "
