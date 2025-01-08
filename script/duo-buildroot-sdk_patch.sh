@@ -12,13 +12,11 @@ duos_compile_switch=0
 
 
 # Patch file
-build_patch="./patch/build_change.patch"
 fip_v2_patch="./patch/fip_v2_change.patch"
 milkv_setup_patch="./patch/milkv_setup_change.patch"
 boards_cv180x_patch="./patch/cv180x_change.patch"
 boards_cv181x_patch="./patch/cv181x_change.patch"
 
-target_build_file="${my_duo_buildroot_sdk_path}/build.sh"
 target_fip_v2_file="${my_duo_buildroot_sdk_path}/build/scripts/fip_v2.mk"
 target_milkv_setup_file="${my_duo_buildroot_sdk_path}/build/milkvsetup.sh"
 boards_cv180x_dir="${my_duo_buildroot_sdk_path}/build/boards/cv180x/"
@@ -47,25 +45,8 @@ if [ -z "$1" ] ; then
     fi
     
 fi
-#  Check file exist
-if [ ! -f "${build_patch}" ] && [ ! -f "${fip_v2_patch}" ]; then
-    echo "patch Missing"
-    exit 1  
-fi
-if  [ ! -f "${target_build_file}" ] && [ ! -f "${target_fip_v2_file}" ] ; then
-    echo "target file Missing"
-    exit 1 
-fi
 
 #  Use file patch
-diff -q "${target_build_file}" "${target_build_file}.orig"
-if [  $? -eq 0 ]; then
-    echo "build_patch applied successfully"
-else
-    echo "Files different add patch"
-    patch -p1 "${target_build_file}" "${build_patch}"
-fi
-
 diff -q "${target_fip_v2_file}" "${target_fip_v2_file}.orig"
 if [ $? -eq 0 ]; then
     echo "fip_v2_patch applied successfully"
