@@ -223,7 +223,7 @@ function mkpkg() {
 					popd
 					return 1
 				fi
-				bash combine-fip.sh ${RT_DUO_BKERNEL} ${BIMAGE} ${DPT_BOARD_TYPE} ${DPT_PATH_OUTPUT}
+				bash combine-fip.sh ${RT_DUO_BKERNEL} ${SIMAGE} ${DPT_BOARD_TYPE} ${DPT_PATH_OUTPUT}
 			popd
 			;;
 	esac
